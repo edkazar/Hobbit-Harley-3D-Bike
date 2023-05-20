@@ -5,6 +5,10 @@ using UnityEngine.UI;
 
 public class ButtonManager : MonoBehaviour
 {
+	public AudioClip correct;
+	public AudioClip wrong;
+	public AudioSource source;
+
     [SerializeField]
     private GameObject welcomeElements;
 
@@ -97,6 +101,7 @@ public class ButtonManager : MonoBehaviour
     public void Quiz1()
     {
 		welcomeElements.SetActive(false);
+
 		
 		Q1.SetActive(true);
 		Time.timeScale = 0f;
@@ -118,25 +123,35 @@ public class ButtonManager : MonoBehaviour
     {
 		oops.SetActive(false);
 		anim.SetBool("HelmetFloat", false);
-		if (option1.isOn && option2.isOn && option3.isOn && option4.isOn && option5.isOn)
+		if (option1.isOn && option2.isOn && option3.isOn && option4.isOn && option5.isOn && option6.isOn)
 		{
-            if (option6.isOn == false)
-            {
-                Debug.Log("Q1isCorrect");
-				Q1.SetActive(false);
-				Time.timeScale = 0f;
-				anim.SetBool("HelmetFloat", true);
-				Q1re.SetActive(true);
+            Debug.Log("Q1isCorrect");
+			Q1.SetActive(false);
+			Time.timeScale = 0f;
+			anim.SetBool("HelmetFloat", true);
+			source.clip = correct;
+			source.Play();
+			Invoke(nameof(timeContinue), 2.0f);
+			
+			anim.Play("HelmetFloat");
+
+
+			Invoke(nameof(timeContinue), 2.0f);
+			Time.timeScale = 0f;
+			Q1re.SetActive(true);
+			
 				//ui Q1remove
 				//play animation 
 				//ui reinforcement
-			}
+			
 		}
 		else
 		{
 			restartQ1();
 			anim.SetBool("HelmetFloat", false);
 			oops.SetActive(true);
+			source.clip = wrong;
+			source.Play();
 			//show "The answer is wrong, try again."
 		}
 
@@ -224,5 +239,12 @@ public class ButtonManager : MonoBehaviour
 		}
 
 	}
-	
+	public void timeContinue()
+	{
+		Time.timeScale = 1f;
+		//currentTargetPos++;
+		
+
+	}
+
 }

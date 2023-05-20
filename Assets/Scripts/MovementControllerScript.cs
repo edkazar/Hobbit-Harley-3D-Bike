@@ -16,7 +16,6 @@ public class MovementControllerScript : MonoBehaviour
 
     private List<Transform> WayPoints;
 	public ButtonManager buttonManager;
-    public Quiz3 q3;
 
 	public GameObject quiz2;
 	public GameObject quiz3;
@@ -156,7 +155,7 @@ public class MovementControllerScript : MonoBehaviour
 
 			else if (playerTransform.position == WayPoints[3].position )
             {
-                bikeMovement = 0.0f;
+                //bikeMovement = 0.0f;
                 Time.timeScale = 0f;
 				quiz3.SetActive(true);
                 Invoke(nameof(timeContinue), 2.0f);
