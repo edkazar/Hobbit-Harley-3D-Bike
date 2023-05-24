@@ -30,20 +30,25 @@ public class CameraRotations : MonoBehaviour
     {
         if (positionUpdated)
         {
-            if(currentCameraPos.position == cameraWalkingPos.position)
-            {
-                currentCameraPos = cameraRidingPos;
-            }
-            else
-            {
-                currentCameraPos = cameraWalkingPos;
-            }
-            HobbitWalkingArms.SetActive(!HobbitWalkingArms.activeSelf);
-            HobbitRidingArms.SetActive(!HobbitRidingArms.activeSelf);
             positionUpdated = false;
+            Invoke(nameof(updateCameraPosition), 0.3f);
         }
 
         myCamera.transform.position = Vector3.MoveTowards(myCamera.transform.position, currentCameraPos.position, cameraMovementSpeed * Time.deltaTime);
+    }
+
+    private void updateCameraPosition()
+    {
+        if (currentCameraPos.position == cameraWalkingPos.position)
+        {
+            currentCameraPos = cameraRidingPos;
+        }
+        else
+        {
+            currentCameraPos = cameraWalkingPos;
+        }
+        HobbitWalkingArms.SetActive(!HobbitWalkingArms.activeSelf);
+        HobbitRidingArms.SetActive(!HobbitRidingArms.activeSelf);
     }
 
     // Update is called once per frame

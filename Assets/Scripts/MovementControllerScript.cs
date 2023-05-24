@@ -34,6 +34,8 @@ public class MovementControllerScript : MonoBehaviour
     private int degresPerSecond = 2;
     private float bikeMovement = 1.0f;
 
+    private BlinkWarningController myWarningController;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,7 +56,9 @@ public class MovementControllerScript : MonoBehaviour
         WayPoints.Add(GameObject.Find("WayPoint13").transform);
 
         currentTargetPos = 0;
-        
+
+        GameObject WarningObject = GameObject.Find("WarningSymbols");
+        myWarningController = WarningObject.GetComponent<BlinkWarningController>();
 
         //GameObject UIController = GameObject.Find("UI_Checklist");
         //myUIController = UIController.GetComponent<UITaskController>();
@@ -240,12 +244,23 @@ public class MovementControllerScript : MonoBehaviour
     public void timeContinue()
     {
 		Time.timeScale = 1f;
-		//currentTargetPos++;
+
         if(playerTransform.position == WayPoints[3].position)
         {
             startTest = true;
         }
 
+    }
+
+    public void timeContinueWarning()
+    {
+        Time.timeScale = 1f;
+        Invoke(nameof(callWarning), 3.0f);
+    }
+
+    private void callWarning()
+    {
+        myWarningController.playRightWarning();
     }
 
     public float getBikeMovement()

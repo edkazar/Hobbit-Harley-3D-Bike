@@ -47,6 +47,10 @@ public class ButtonManager : MonoBehaviour
 
 	private UITaskController myUIController;
 
+	private BlinkWarningController myWarningController;
+
+	private bool first_time = true;
+
 	private void Awake()
 	{
 		anim = GetComponent<Animator>();
@@ -68,12 +72,15 @@ public class ButtonManager : MonoBehaviour
 		lastWayPoint = GameObject.Find("WayPoint13").transform;
 		WayPtOne = GameObject.Find("WayPoint2").transform;
 
+		GameObject WarningObject = GameObject.Find("WarningSymbols");
+		myWarningController = WarningObject.GetComponent<BlinkWarningController>();
+
 		//GameObject UIController = GameObject.Find("UI_Checklist");
-        //myUIController = UIController.GetComponent<UITaskController>();
+		//myUIController = UIController.GetComponent<UITaskController>();
 	}
 
-    // Update is called once per frame
-    void Update()
+	// Update is called once per frame
+	void Update()
     {
 		//beginHalo();
 		
@@ -91,6 +98,11 @@ public class ButtonManager : MonoBehaviour
     {
 		welcomeElements.SetActive(false);
         Time.timeScale = 1f;
+		if (first_time)
+		{
+			myWarningController.playLeftWarning();
+			first_time = false;
+		}
 	}
 
     public void endExperience()
