@@ -38,12 +38,15 @@ public class MovementControllerScript : MonoBehaviour
 
     private BlinkWarningController myWarningController;
 
+    private CarSpeedController mySpeedController1;
+    private CarSpeedController mySpeedController2;
+
     // Start is called before the first frame update
     void Start()
     {
         setStartTestFalse();
 
-        chain.SetActive(false);
+        //chain.SetActive(false);
         WayPoints = new List<Transform>();
         WayPoints.Add(GameObject.Find("WayPoint2").transform);
         WayPoints.Add(GameObject.Find("WayPoint3").transform);
@@ -57,11 +60,17 @@ public class MovementControllerScript : MonoBehaviour
 		WayPoints.Add(GameObject.Find("WayPoint11").transform);
         WayPoints.Add(GameObject.Find("WayPoint12").transform);
         WayPoints.Add(GameObject.Find("WayPoint13").transform);
+        WayPoints.Add(GameObject.Find("WayPoint14").transform);
 
         currentTargetPos = 0;
 
         GameObject WarningObject = GameObject.Find("WarningSymbols");
         myWarningController = WarningObject.GetComponent<BlinkWarningController>();
+
+        GameObject SpeedObject1 = GameObject.Find("CarMovementController1");
+        GameObject SpeedObject2 = GameObject.Find("CarMovementController2");
+        mySpeedController1 = SpeedObject1.GetComponent<CarSpeedController>();
+        mySpeedController2 = SpeedObject2.GetComponent<CarSpeedController>();
 
         //GameObject UIController = GameObject.Find("UI_Checklist");
         //myUIController = UIController.GetComponent<UITaskController>();
@@ -121,6 +130,7 @@ public class MovementControllerScript : MonoBehaviour
     private void rotationRoutine()
     {
         //playerTransform.LookAt(WayPoints[currentTargetPos].position);
+        //playerTransform.LookAt(WayPoints[currentTargetPos].position);
         Vector3 directionFromMeToTarget = (playerTransform.position - WayPoints[currentTargetPos].position);
 
         directionFromMeToTarget.z = -1.0f * (directionFromMeToTarget.z);
@@ -146,11 +156,11 @@ public class MovementControllerScript : MonoBehaviour
 		{
 			wheel1.Rotate(360 * rotateSpeed * Time.deltaTime * bikeMovement, 0, 0);
 			wheel2.Rotate(360 * rotateSpeed * Time.deltaTime * bikeMovement, 0, 0);
-            chain.SetActive(true);
+            //chain.SetActive(true);
 		}
         else
         {
-            chain.SetActive(false);
+            //chain.SetActive(false);
         }
         
 	}
@@ -167,21 +177,21 @@ public class MovementControllerScript : MonoBehaviour
 
 			else if (playerTransform.position == WayPoints[3].position )
             {
-                //bikeMovement = 0.0f;
+                bikeMovement = 0.0f;
                 Time.timeScale = 0f;
 				quiz3.SetActive(true);
                 Invoke(nameof(timeContinue), 2.0f);
 
             }
 
-            else if (playerTransform.position == WayPoints[4].position)
+            else if (playerTransform.position == WayPoints[5].position)
 			{
 				Time.timeScale = 0f;
 				quiz4.SetActive(true);
 				Invoke(nameof(timeContinue), 2.0f);
 
 			}
-            else if (playerTransform.position == WayPoints[5].position)
+            else if (playerTransform.position == WayPoints[6].position)
 			{
 				Time.timeScale = 0f;
 				quiz5.SetActive(true);
@@ -189,15 +199,16 @@ public class MovementControllerScript : MonoBehaviour
 
 
 			}
-            else if (playerTransform.position == WayPoints[7].position)
+            else if (playerTransform.position == WayPoints[8].position)
 			{
-				Time.timeScale = 0f;
+                mySpeedController1.stopCars();
+                mySpeedController2.stopCars();
+                Time.timeScale = 0f;
 				quiz6.SetActive(true);
 				Invoke(nameof(timeContinue), 2.0f);
 
-
 			}
-            else if (playerTransform.position == WayPoints[10].position)
+            else if (playerTransform.position == WayPoints[11].position)
 			{
 				Time.timeScale = 0f;
 				quiz7.SetActive(true);
@@ -225,7 +236,7 @@ public class MovementControllerScript : MonoBehaviour
             }*/
         }
 
-        if (playerTransform.position == WayPoints[10].position)
+        if (playerTransform.position == WayPoints[WayPoints.Count-1].position)
         {
             experienceDone = true;
         }

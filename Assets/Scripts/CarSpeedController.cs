@@ -28,7 +28,7 @@ public class CarSpeedController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        currentMovementSpeed = stopMovementSpeed;
     }
 
     // Update is called once per frame
@@ -69,6 +69,16 @@ public class CarSpeedController : MonoBehaviour
             hubcap.RotateAround(hubcap.position, Vector3.forward, wheelSpeed * Time.deltaTime);
         }
 
+    }
+
+    public void startCars()
+    {
+        resetSpeed(false);
+    }
+
+    public void stopCars()
+    {
+        currentMovementSpeed = stopMovementSpeed;
     }
 
 }

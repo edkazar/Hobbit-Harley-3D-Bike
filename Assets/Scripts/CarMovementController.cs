@@ -31,7 +31,7 @@ public class CarMovementController : MonoBehaviour
         //GameObject speedController = GameObject.Find("CarMovementController");
         mySpeedController = speedController.GetComponent<CarSpeedController>();
 
-        mySpeedController.resetSpeed(movementController.GetComponent<MovementControllerScript>().hasCrossed);
+        //mySpeedController.resetSpeed(movementController.GetComponent<MovementControllerScript>().hasCrossed);
     }
 
     // Update is called once per frame

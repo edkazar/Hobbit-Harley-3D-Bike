@@ -15,6 +15,7 @@ public class CameraRotations : MonoBehaviour
     [SerializeField] private GameObject HobbitWalkingArms;
     [SerializeField] private GameObject HobbitRidingArms;
     private Transform currentCameraPos;
+    private AudioSource bikeChain;
 
     private int cameraMovementSpeed = 3;
 
@@ -24,6 +25,7 @@ public class CameraRotations : MonoBehaviour
     void Start()
     {
         currentCameraPos = cameraWalkingPos;
+        bikeChain = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -42,10 +44,12 @@ public class CameraRotations : MonoBehaviour
         if (currentCameraPos.position == cameraWalkingPos.position)
         {
             currentCameraPos = cameraRidingPos;
+            bikeChain.Play();
         }
         else
         {
             currentCameraPos = cameraWalkingPos;
+            bikeChain.Stop();
         }
         HobbitWalkingArms.SetActive(!HobbitWalkingArms.activeSelf);
         HobbitRidingArms.SetActive(!HobbitRidingArms.activeSelf);

@@ -20,6 +20,11 @@ public class ButtonManager : MonoBehaviour
 	[SerializeField]
 	private GameObject Q1re;
 
+	[SerializeField]
+	private GameObject Q7;
+	[SerializeField]
+	private GameObject Q7re;
+
 	[SerializeField]Transform playerTransform;
 	[SerializeField] GameObject hel;
 	public Animator anim;
@@ -37,6 +42,9 @@ public class ButtonManager : MonoBehaviour
 	[SerializeField] Toggle option4;
 	[SerializeField] Toggle option5;
 	[SerializeField] Toggle option6;
+	[SerializeField] Toggle option7_1;
+	[SerializeField] Toggle option7_2;
+	[SerializeField] Toggle option7_3;
 
 	[SerializeField] GameObject oops;
 
@@ -169,6 +177,30 @@ public class ButtonManager : MonoBehaviour
 
 	}
 
+	public void Q7isCorrect()
+	{
+		oops.SetActive(false);
+		if (option7_1.isOn && option7_2.isOn && option7_3.isOn)
+		{
+			Q7.SetActive(false);
+			Time.timeScale = 0f;
+			source.clip = correct;
+			source.Play();
+			Invoke(nameof(timeContinue), 2.0f);
+
+			Q7re.SetActive(true);
+		}
+		else
+		{
+			toggleOff();
+			oops.SetActive(true);
+			source.clip = wrong;
+			source.Play();
+			//show "The answer is wrong, try again."
+		}
+
+	}
+
 	private void toggleOff()
 	{
 		option1.isOn = false;
@@ -177,6 +209,9 @@ public class ButtonManager : MonoBehaviour
 		option4.isOn = false;
 		option5.isOn = false;
 		option6.isOn = false;
+		option7_1.isOn = false;
+		option7_2.isOn = false;
+		option7_3.isOn = false;
 	}
     public void startHalo()
     {
