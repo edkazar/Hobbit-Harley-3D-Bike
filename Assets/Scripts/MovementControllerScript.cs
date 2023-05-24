@@ -24,6 +24,8 @@ public class MovementControllerScript : MonoBehaviour
 	public GameObject quiz6;
 	public GameObject quiz7;
 
+    public GameObject chain;
+
 	public bool hasCrossed = false;
     public bool fulfilledTest = false;
     public bool startTest = false;
@@ -41,6 +43,7 @@ public class MovementControllerScript : MonoBehaviour
     {
         setStartTestFalse();
 
+        chain.SetActive(false);
         WayPoints = new List<Transform>();
         WayPoints.Add(GameObject.Find("WayPoint2").transform);
         WayPoints.Add(GameObject.Find("WayPoint3").transform);
@@ -143,7 +146,12 @@ public class MovementControllerScript : MonoBehaviour
 		{
 			wheel1.Rotate(360 * rotateSpeed * Time.deltaTime * bikeMovement, 0, 0);
 			wheel2.Rotate(360 * rotateSpeed * Time.deltaTime * bikeMovement, 0, 0);
+            chain.SetActive(true);
 		}
+        else
+        {
+            chain.SetActive(false);
+        }
         
 	}
     void updateTargetPosition()
@@ -228,6 +236,7 @@ public class MovementControllerScript : MonoBehaviour
         startTest = false;
         fulfilledTest = true;
         bikeMovement = 1.0f;
+        
         //myUIController.ongoingTest = false;
     }
 
