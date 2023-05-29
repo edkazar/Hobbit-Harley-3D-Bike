@@ -8,6 +8,7 @@ public class ColliderWP2 : MonoBehaviour
     private MovementControllerScript myMovementController;
 
     private CameraRotations myCameraScript;
+    private ChainSoundController myChainSoundController;
 
     void Start()
     {
@@ -16,6 +17,9 @@ public class ColliderWP2 : MonoBehaviour
 
         GameObject CameraController = GameObject.Find("Camera");
         myCameraScript = CameraController.GetComponent<CameraRotations>();
+
+        GameObject ChainController = GameObject.Find("ChainSoundManager");
+        myChainSoundController = ChainController.GetComponent<ChainSoundController>();
     }
 
     // Start is called before the first frame update
@@ -23,6 +27,7 @@ public class ColliderWP2 : MonoBehaviour
     {
         myMovementController.movementSpeed = 3.0f;
         myCameraScript.positionUpdated = true;
+        myChainSoundController.playSound(0.5f);
         //Player.transform.Rotate(Vector3.up * 45 * Time.deltaTime, Space.Self);
     }
 }
