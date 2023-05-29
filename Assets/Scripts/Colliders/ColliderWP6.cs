@@ -8,6 +8,7 @@ public class ColliderWP6 : MonoBehaviour
 
     private CarSpeedController mySpeedController1;
     private CarSpeedController mySpeedController2;
+    private DrivewayCarMovementController myDrivewayCarController;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,9 @@ public class ColliderWP6 : MonoBehaviour
         GameObject SpeedObject2 = GameObject.Find("CarMovementController2");
         mySpeedController1 = SpeedObject1.GetComponent<CarSpeedController>();
         mySpeedController2 = SpeedObject2.GetComponent<CarSpeedController>();
+
+        GameObject DrContr = GameObject.Find("DrivewayCarMovementController");
+        myDrivewayCarController = DrContr.GetComponent<DrivewayCarMovementController>();
     }
 
     // Update is called once per frame
@@ -36,6 +40,7 @@ public class ColliderWP6 : MonoBehaviour
 
     private void callWarning()
     {
+        myDrivewayCarController.startCarMovement = true;
         myWarningController.playRightWarning();
     }
 }

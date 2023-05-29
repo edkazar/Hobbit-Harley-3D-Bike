@@ -20,10 +20,11 @@ public class BodyConstraint : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (myMovementController.getBikeMovement() > 0.0f)
+        // Bike rotations
+        /*if (myMovementController.getBikeMovement() > 0.0f)
         {
             followY = followObject.eulerAngles.y;
             rootObject.eulerAngles = new Vector3(fixedRotation, followY, fixedRotation);
-        }   
+        }  */ 
     }
 }
