@@ -68,6 +68,8 @@ public class MovementControllerScript : MonoBehaviour
         WayPoints.Add(GameObject.Find("WayPoint19").transform);
         WayPoints.Add(GameObject.Find("WayPoint20").transform);
         WayPoints.Add(GameObject.Find("WayPoint21").transform);
+        WayPoints.Add(GameObject.Find("WayPoint22").transform);
+        WayPoints.Add(GameObject.Find("WayPoint23").transform);
 
         currentTargetPos = 0;
 
@@ -215,7 +217,7 @@ public class MovementControllerScript : MonoBehaviour
 				Invoke(nameof(timeContinue), 2.0f);
 
 			}
-            else if (playerTransform.position == WayPoints[18].position)
+            else if (playerTransform.position == WayPoints[19].position)
 			{
 				Time.timeScale = 0f;
 				quiz7.SetActive(true);
