@@ -16,7 +16,7 @@ public class TestControllerManager : MonoBehaviour
     private int outerTestID;
     private int innerTestID;
 
-    private int[] testsOrder = new int[] {2, 4, 1, 0, 1, 3}; // 0: right, 1: left, 2: face, 3: forward, 4: yield
+    private int[] testsOrder = new int[] {2, 4, 1, 0, 1, 3, 1, 0 , 1, 2, 3}; // 0: right, 1: left, 2: face, 3: forward, 4: yield
     private string[] helpTexts = new string[] { "Before crossing a street, look to your right to make sure cars are not coming!",
                                                 "Before crossing a street, look to your left to make sure cars are not coming!",
                                                 "If a car is coming, make eye contact with the driver to ask for the right-of-way!",
@@ -33,7 +33,7 @@ public class TestControllerManager : MonoBehaviour
     [SerializeField] private Transform Ring1Pos;
     [SerializeField] private Transform Ring2Pos;
     [SerializeField] private Transform Ring3Pos;
-    //[SerializeField] private Transform anillo4Pos;
+    [SerializeField] private Transform Ring4Pos;
 
     [SerializeField] private GameObject HelpText;
     private Text helpTextField;
@@ -183,14 +183,14 @@ public class TestControllerManager : MonoBehaviour
                 Vector3 ring1 = myCamera.WorldToScreenPoint(Ring1Pos.position);
                 Vector3 ring2 = myCamera.WorldToScreenPoint(Ring2Pos.position);
                 Vector3 ring3 = myCamera.WorldToScreenPoint(Ring3Pos.position);
-                //Vector3 anillo4 = myCamera.WorldToScreenPoint(anillo4Pos.position);
+                Vector3 ring4 = myCamera.WorldToScreenPoint(Ring4Pos.position);
 
                 //if (mousePosX < anillo4.x + offset * 2 && mousePosX > anillo4.x - offset * 2 && mousePosY < anillo4.y + offset * 2 && mousePosY > anillo4.y - offset * 2)
 
                 if ((mousePosX < ring1.x + offset * 2 && mousePosX > ring1.x - offset * 2 && mousePosY < ring1.y + offset * 2 && mousePosY > ring1.y - offset * 2) ||
                 (mousePosX < ring2.x + offset * 2 && mousePosX > ring2.x - offset * 2 && mousePosY < ring2.y + offset * 2 && mousePosY > ring2.y - offset * 2) ||
-                (mousePosX < ring3.x + offset * 2 && mousePosX > ring3.x - offset * 2 && mousePosY < ring3.y + offset * 2 && mousePosY > ring3.y - offset * 2) /*||
-                (mousePosX < anillo4.x + offset*2 && mousePosX > anillo4.x - offset*2 && mousePosY < anillo4.y + offset*2 && mousePosY > anillo4.y - offset*2)*/)
+                (mousePosX < ring3.x + offset * 2 && mousePosX > ring3.x - offset * 2 && mousePosY < ring3.y + offset * 2 && mousePosY > ring3.y - offset * 2) ||
+                (mousePosX < ring4.x + offset*2 && mousePosX > ring4.x - offset*2 && mousePosY < ring4.y + offset*2 && mousePosY > ring4.y - offset*2))
                 {
                     timeTaken++;
 
@@ -206,7 +206,7 @@ public class TestControllerManager : MonoBehaviour
                     timeTaken = 0;
                 }
             }
-            else if (testsOrder[testOrderCounter] == 2)
+            else if (testsOrder[testOrderCounter] == 3)
             {
                 float sentitivity = 3.0f;
                 if (mousePosX < screenPos.x + (offset * sentitivity) && mousePosX > screenPos.x - (offset * sentitivity))
@@ -229,6 +229,7 @@ public class TestControllerManager : MonoBehaviour
                 if(waitForCar >= 600)
                 {
                     timeTaken = targetTestTime;
+                    waitForCar = 0;
                 }
                 //StartCoroutine(yieldForCar());
             }

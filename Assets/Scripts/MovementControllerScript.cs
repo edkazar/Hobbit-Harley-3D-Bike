@@ -210,6 +210,7 @@ public class MovementControllerScript : MonoBehaviour
 			}
             else if (playerTransform.position == WayPoints[15].position)
 			{
+                bikeMovement = 0.0f;
                 mySpeedController1.stopCars();
                 mySpeedController2.stopCars();
                 Time.timeScale = 0f;
@@ -274,7 +275,7 @@ public class MovementControllerScript : MonoBehaviour
     {
 		Time.timeScale = 1f;
 
-        if(playerTransform.position == WayPoints[6].position)
+        if(playerTransform.position == WayPoints[6].position || playerTransform.position == WayPoints[15].position)
         {
             startTest = true;
         }

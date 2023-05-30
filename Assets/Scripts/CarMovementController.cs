@@ -62,7 +62,8 @@ public class CarMovementController : MonoBehaviour
         }*/
     }
 
-    void OnMouseOver()
+    // Routines to slow the car down with mouse interaction
+    /*void OnMouseOver()
     {
         //If your mouse hovers over the GameObject with the script attached, output this message
         mySpeedController.changeMovementspeed(slowMovementID);
@@ -72,7 +73,7 @@ public class CarMovementController : MonoBehaviour
     {
         //If your mouse hovers over the GameObject with the script attached, output this message
         mySpeedController.changeMovementspeed(-1);
-    }
+    }*/
 
     void checkCarPosition()
     {
