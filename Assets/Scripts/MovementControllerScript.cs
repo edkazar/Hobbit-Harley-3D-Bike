@@ -66,7 +66,8 @@ public class MovementControllerScript : MonoBehaviour
         WayPoints.Add(GameObject.Find("WayPoint17").transform);
         WayPoints.Add(GameObject.Find("WayPoint18").transform);
         WayPoints.Add(GameObject.Find("WayPoint19").transform);
-        //WayPoints.Add(GameObject.Find("WayPoint20").transform);
+        WayPoints.Add(GameObject.Find("WayPoint20").transform);
+        WayPoints.Add(GameObject.Find("WayPoint21").transform);
 
         currentTargetPos = 0;
 
@@ -181,7 +182,7 @@ public class MovementControllerScript : MonoBehaviour
 				Invoke(nameof(timeContinue), 2.0f);
 			}
 
-			else if (playerTransform.position == WayPoints[5].position )
+			else if (playerTransform.position == WayPoints[6].position )
             {
                 bikeMovement = 0.0f;
                 Time.timeScale = 0f;
@@ -190,14 +191,14 @@ public class MovementControllerScript : MonoBehaviour
 
             }
 
-            else if (playerTransform.position == WayPoints[7].position)
+            else if (playerTransform.position == WayPoints[8].position)
 			{
 				Time.timeScale = 0f;
 				quiz4.SetActive(true);
 				Invoke(nameof(timeContinue), 2.0f);
 
 			}
-            else if (playerTransform.position == WayPoints[11].position)
+            else if (playerTransform.position == WayPoints[12].position)
 			{
 				Time.timeScale = 0f;
 				quiz5.SetActive(true);
@@ -205,7 +206,7 @@ public class MovementControllerScript : MonoBehaviour
 
 
 			}
-            else if (playerTransform.position == WayPoints[13].position)
+            else if (playerTransform.position == WayPoints[15].position)
 			{
                 mySpeedController1.stopCars();
                 mySpeedController2.stopCars();
@@ -214,7 +215,7 @@ public class MovementControllerScript : MonoBehaviour
 				Invoke(nameof(timeContinue), 2.0f);
 
 			}
-            else if (playerTransform.position == WayPoints[16].position)
+            else if (playerTransform.position == WayPoints[18].position)
 			{
 				Time.timeScale = 0f;
 				quiz7.SetActive(true);
@@ -271,7 +272,7 @@ public class MovementControllerScript : MonoBehaviour
     {
 		Time.timeScale = 1f;
 
-        if(playerTransform.position == WayPoints[5].position)
+        if(playerTransform.position == WayPoints[6].position)
         {
             startTest = true;
         }

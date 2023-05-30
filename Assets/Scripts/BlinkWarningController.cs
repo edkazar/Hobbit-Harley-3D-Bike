@@ -23,7 +23,7 @@ public class BlinkWarningController : MonoBehaviour
     {
         RightWarning.SetActive(true);
         DownWarning.SetActive(true);
-        Invoke(nameof(deactivateWarning), 3.0f);
+        Invoke(nameof(deactivateWarning), 2.5f);
     }
 
     private void deactivateWarning()

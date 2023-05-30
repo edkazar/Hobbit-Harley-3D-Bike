@@ -17,7 +17,6 @@ public class WayPoint13Triggers : MonoBehaviour
         myChainSoundController = ChainController.GetComponent<ChainSoundController>();
     }
 
-    // Update is called once per frame
     private void OnCollisionEnter(Collision collision)
     {
         myMovementController.movementSpeed = 3.0f;

@@ -19,7 +19,7 @@ public class WayPoint5Triggers : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        myMovementController.movementSpeed = 7.0f;
-        myChainSoundController.playSound(1.5f);
+        myMovementController.movementSpeed = 3.0f;
+        myChainSoundController.playSound(1.0f);
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class DrivewayCarMovementController : MonoBehaviour
 {
     [SerializeField] Transform carTransform;
-    private float movementSpeed = 3.0f;
+    private float movementSpeed = 3.5f;
     private int currentTargetPos;
     private bool carTravelDone = false;
     public bool startCarMovement = false;
