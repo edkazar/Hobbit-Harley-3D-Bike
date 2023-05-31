@@ -24,14 +24,15 @@ public class Q245ToggleGroup : MonoBehaviour
     {
         Toggle toggle = toggleGroup.ActiveToggles().FirstOrDefault();
         Debug.Log(toggle.name + ": " + toggle.GetComponentInChildren<Text>().text);
-        if(toggle.name=="Toggle" + ans)
+        oops.SetActive(false);
+        if (toggle.name=="Toggle" + ans)
         {
             QuizCorrect();
         }
         else
         {
             QuizWrong();
-            oops.SetActive(true);
+            
         }
     }
 
@@ -39,13 +40,20 @@ public class Q245ToggleGroup : MonoBehaviour
     {
         source.clip = correct;
         source.Play();
+        Invoke(nameof(SetRe), 0.1f);
         re.SetActive(true);
-        quizfin.SetActive(false);
     }
 
     public void QuizWrong()
     {
         source.clip = wrong;
         source.Play();
+        oops.SetActive(true);
+    }
+
+    public void SetRe()
+    {
+        
+        quizfin.SetActive(false);
     }
 }
