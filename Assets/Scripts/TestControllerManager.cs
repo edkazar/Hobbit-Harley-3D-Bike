@@ -47,6 +47,10 @@ public class TestControllerManager : MonoBehaviour
 
     private int waitForCar;
 
+    public int showReinforcement = 0;
+    public GameObject Q3re;
+    private bool first_time = true;
+
     public bool waving;
     public bool stopRenderBall = false;
 
@@ -95,6 +99,8 @@ public class TestControllerManager : MonoBehaviour
 
             runTest();         
         }
+
+        activateReinforcement();
     }
 
 
@@ -250,12 +256,23 @@ public class TestControllerManager : MonoBehaviour
 
                 if (innerTestID >= Tests[outerTestID].Count)
                 {
+                    showReinforcement += 1;
                     innerTestID = 0;
                     outerTestID++;
                     myMovementController.setStartTestFalse();
                     //StartCoroutine(resumeCarMovement());
                 }
             }
+        }
+    }
+
+    private void activateReinforcement()
+    {
+        if (showReinforcement == 1 && first_time)
+        {
+            Time.timeScale = 0f;
+            Q3re.SetActive(true);
+            first_time = false;
         }
     }
 

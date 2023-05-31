@@ -255,10 +255,14 @@ public class MovementControllerScript : MonoBehaviour
     public void setStartTestFalse()
     {
         startTest = false;
-        fulfilledTest = true;
-        bikeMovement = 1.0f;
-        
+        fulfilledTest = true;      
         //myUIController.ongoingTest = false;
+    }
+
+    public void bikeContinue()
+    {
+        bikeMovement = 1.0f;
+        Time.timeScale = 1f;
     }
 
     public int getWaypointsLength()

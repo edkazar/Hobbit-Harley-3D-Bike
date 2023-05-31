@@ -12,10 +12,13 @@ public class Quiz3 : MonoBehaviour
 	Vector2 Pos1, Pos2, Pos3, Pos4, Pos5;
 
 	public AudioSource source;
-	
+
+	private TestControllerManager myTestManager;
+
 	public AudioClip correct;
 	public AudioClip wrong;
 	bool A1C, A2C, A3C, A4C, A5C = false;
+	bool first_time = true;
 	// Start is called before the first frame update
 	void Start()
 	{
@@ -26,18 +29,19 @@ public class Quiz3 : MonoBehaviour
 		Pos5 = A5.transform.position;
 
 		source.Play();
-		
+
+		GameObject TestManager = GameObject.Find("TestController");
+		myTestManager = TestManager.GetComponent<TestControllerManager>();
 	}
 
 	// Update is called once per frame
 	void Update()
 	{
-		
-		if (A1C && A2C && A3C && A4C && A5C)
+		/*if (A1C && A2C && A3C && A4C && A5C)
 		{
 
 			Debug.Log("Q3correct");
-		}
+		}*/
 	}
 
 	public void dragA1()
@@ -156,9 +160,6 @@ public class Quiz3 : MonoBehaviour
 	{
 		if (A1C && A2C && A3C && A4C && A5C)
 		{
-
-			Debug.Log("Q3correct");
-			Q3re.SetActive(true);
 			Q3.SetActive(false);
 		}
 	}

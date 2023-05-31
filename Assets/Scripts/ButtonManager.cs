@@ -290,8 +290,5 @@ public class ButtonManager : MonoBehaviour
 	{
 		Time.timeScale = 1f;
 		//currentTargetPos++;
-		
-
 	}
-
 }
