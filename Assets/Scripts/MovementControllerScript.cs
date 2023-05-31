@@ -211,8 +211,8 @@ public class MovementControllerScript : MonoBehaviour
             else if (playerTransform.position == WayPoints[15].position)
 			{
                 bikeMovement = 0.0f;
-                mySpeedController1.stopCars();
-                mySpeedController2.stopCars();
+                mySpeedController1.slowingDown = true;
+                mySpeedController2.slowingDown = true;
                 Time.timeScale = 0f;
 				quiz6.SetActive(true);
 				Invoke(nameof(timeContinue), 2.0f);

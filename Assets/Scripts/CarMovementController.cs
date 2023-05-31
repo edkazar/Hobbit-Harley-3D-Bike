@@ -7,6 +7,9 @@ public class CarMovementController : MonoBehaviour
     [SerializeField]
     private Transform carTransform;
 
+    [SerializeField]
+    private Transform playerTransform;
+
     [SerializeField] private GameObject speedController;
     private CarSpeedController mySpeedController;
     private TestControllerManager myTestManager;
@@ -37,6 +40,7 @@ public class CarMovementController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if (forwardDirection)
         {
             carTransform.position = carTransform.position - new Vector3(mySpeedController.currentMovementSpeed * Time.deltaTime / 2, 0, 0);
@@ -47,6 +51,19 @@ public class CarMovementController : MonoBehaviour
         }
 
         resetPosition();
+        
+        if (mySpeedController.slowingDown)
+        {
+            float distance = Vector3.Distance(carTransform.position, playerTransform.position);
+            if (distance <= 10.0f)
+            {
+                mySpeedController.changeMovementspeed(stopMovementID);
+            }
+            else if (distance <= 20.0f)
+            {
+                mySpeedController.changeMovementspeed(slowMovementID);
+            }
+        }
 
         /*if(mySpeedController.justCrossed)
         {

@@ -16,6 +16,7 @@ public class CarSpeedController : MonoBehaviour
 
     public bool justCrossed = false;
     public int crossCounter = 0;
+    public bool slowingDown = false;
 
     public Transform[] wheels;
     //public Transform Wheel01;
@@ -74,6 +75,11 @@ public class CarSpeedController : MonoBehaviour
     public void startCars()
     {
         resetSpeed(false);
+    }
+
+    public void slowDownForCrossing()
+    {
+
     }
 
     public void stopCars()
