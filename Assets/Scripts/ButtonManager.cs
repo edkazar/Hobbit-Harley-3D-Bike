@@ -29,12 +29,12 @@ public class ButtonManager : MonoBehaviour
 	[SerializeField] GameObject hel;
 	public Animator anim;
 
-	[SerializeField] GameObject h1;
+	/*[SerializeField] GameObject h1;
 	[SerializeField] private GameObject h2;
 	[SerializeField] private GameObject h3;
 	[SerializeField] private GameObject h4;
 	[SerializeField] private GameObject h5;
-	[SerializeField] private GameObject h6;
+	[SerializeField] private GameObject h6;*/
 	
 	[SerializeField] Toggle option1;
 	[SerializeField] Toggle option2;
@@ -71,7 +71,7 @@ public class ButtonManager : MonoBehaviour
 		
 		Q1.SetActive(false);
 		Q1re.SetActive(false);
-		startHalo();
+		//startHalo();
 		Time.timeScale = 0f;
 		anim.SetBool("HelmetFloat", false);
 		helmet = hel.GetComponent<Animation>();
@@ -126,7 +126,7 @@ public class ButtonManager : MonoBehaviour
 		Q1.SetActive(true);
 		Time.timeScale = 0f;
 		oops.SetActive(false);
-		beginHalo();
+		//beginHalo();
 		Q1isCorrect();
         
     }
@@ -134,7 +134,7 @@ public class ButtonManager : MonoBehaviour
     public void restartQ1()
     {
 		toggleOff();
-		startHalo();
+		//startHalo();
 		oops.SetActive(false);
 
 	}
@@ -142,7 +142,7 @@ public class ButtonManager : MonoBehaviour
     public void Q1isCorrect()
     {
 		oops.SetActive(false);
-		anim.SetBool("HelmetFloat", false);
+		//anim.SetBool("HelmetFloat", false);
 		if (option1.isOn && option2.isOn && option3.isOn && option4.isOn && option5.isOn && option6.isOn)
 		{
             Debug.Log("Q1isCorrect");
@@ -213,7 +213,7 @@ public class ButtonManager : MonoBehaviour
 		option7_2.isOn = false;
 		option7_3.isOn = false;
 	}
-    public void startHalo()
+    /*public void startHalo()
     {
 		h1.SetActive(false);
 		h2.SetActive(false);
@@ -285,7 +285,8 @@ public class ButtonManager : MonoBehaviour
 			h6.SetActive(false);
 		}
 
-	}
+	}*/
+
 	public void timeContinue()
 	{
 		Time.timeScale = 1f;
