@@ -49,7 +49,9 @@ public class TestControllerManager : MonoBehaviour
 
     public int showReinforcement = 0;
     public GameObject Q3re;
-    private bool first_time = true;
+    public GameObject Q6re;
+    private bool first_time3 = true;
+    private bool first_time6 = true;
 
     public bool waving;
     public bool stopRenderBall = false;
@@ -100,7 +102,7 @@ public class TestControllerManager : MonoBehaviour
             runTest();         
         }
 
-        activateReinforcement();
+        activateReinforcements();
     }
 
 
@@ -131,7 +133,6 @@ public class TestControllerManager : MonoBehaviour
 
     void runTest()
     {
-        
         testTimeTaken++;
 
         /*if(testTimeTaken >= targetHelpTime)
@@ -256,7 +257,7 @@ public class TestControllerManager : MonoBehaviour
 
                 if (innerTestID >= Tests[outerTestID].Count)
                 {
-                    showReinforcement += 1;
+                    showReinforcement = 1;
                     innerTestID = 0;
                     outerTestID++;
                     myMovementController.setStartTestFalse();
@@ -266,13 +267,22 @@ public class TestControllerManager : MonoBehaviour
         }
     }
 
-    private void activateReinforcement()
+    private void activateReinforcements()
     {
-        if (showReinforcement == 1 && first_time)
+        if (showReinforcement == 1 && first_time3)
         {
             Time.timeScale = 0f;
             Q3re.SetActive(true);
-            first_time = false;
+            first_time3 = false;
+            showReinforcement = 0;
+        }
+
+        else if (showReinforcement == 1 && first_time6)
+        {
+            Time.timeScale = 0f;
+            Q6re.SetActive(true);
+            first_time6 = false;
+            showReinforcement = 0;
         }
     }
 

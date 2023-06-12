@@ -50,7 +50,7 @@ public class CarMovementController : MonoBehaviour
             carTransform.position = carTransform.position + new Vector3(mySpeedController.currentMovementSpeed * Time.deltaTime / 2, 0, 0);
         }
 
-        resetPosition();
+        //resetPosition();
         
         if (mySpeedController.slowingDown)
         {

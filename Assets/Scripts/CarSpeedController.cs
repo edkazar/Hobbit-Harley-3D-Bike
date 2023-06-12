@@ -77,11 +77,6 @@ public class CarSpeedController : MonoBehaviour
         resetSpeed(false);
     }
 
-    public void slowDownForCrossing()
-    {
-
-    }
-
     public void stopCars()
     {
         currentMovementSpeed = stopMovementSpeed;

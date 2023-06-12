@@ -263,6 +263,19 @@ public class MovementControllerScript : MonoBehaviour
     {
         bikeMovement = 1.0f;
         Time.timeScale = 1f;
+
+        if(playerTransform.position == WayPoints[15].position)
+        {
+            Invoke(nameof(resetCarsSpeed), 3.0f);
+        }
+    }
+
+    private void resetCarsSpeed()
+    {
+        mySpeedController1.slowingDown = false;
+        mySpeedController2.slowingDown = false;
+        mySpeedController1.resetSpeed(false);
+        mySpeedController2.resetSpeed(false);
     }
 
     public int getWaypointsLength()
