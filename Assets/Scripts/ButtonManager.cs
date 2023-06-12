@@ -57,6 +57,13 @@ public class ButtonManager : MonoBehaviour
 
 	private BlinkWarningController myWarningController;
 
+	private WayPointController HelmetWayPoints;
+	private WayPointController LightWayPoints;
+	private WayPointController BellWayPoints;
+	private WayPointController HeadphonesWayPoints;
+
+	private MovementControllerScript myMovementController;
+
 	private bool first_time = true;
 
 	private void Awake()
@@ -72,19 +79,29 @@ public class ButtonManager : MonoBehaviour
 		Q1.SetActive(false);
 		Q1re.SetActive(false);
 		//startHalo();
+		//myMovementController.bikeMovement = 0f;
 		Time.timeScale = 0f;
-		anim.SetBool("HelmetFloat", false);
-		helmet = hel.GetComponent<Animation>();
-		
+		//anim.SetBool("HelmetFloat", false);
+		//helmet = hel.GetComponent<Animation>();
 
-		lastWayPoint = GameObject.Find("WayPoint13").transform;
+
+		lastWayPoint = GameObject.Find("WayPoint13").transform; // CHECK THIS
 		WayPtOne = GameObject.Find("WayPoint2").transform;
 
 		GameObject WarningObject = GameObject.Find("WarningSymbols");
 		myWarningController = WarningObject.GetComponent<BlinkWarningController>();
 
-		//GameObject UIController = GameObject.Find("UI_Checklist");
-		//myUIController = UIController.GetComponent<UITaskController>();
+		GameObject helmet = GameObject.Find("HelmetWayPoints");
+		HelmetWayPoints = helmet.GetComponent<WayPointController>();
+		GameObject light = GameObject.Find("LightWayPoints");
+		LightWayPoints = light.GetComponent<WayPointController>();
+		GameObject bell = GameObject.Find("BellWayPoints");
+		BellWayPoints = bell.GetComponent<WayPointController>();
+		GameObject headphones = GameObject.Find("HeadphonesWayPoints");
+		HeadphonesWayPoints = headphones.GetComponent<WayPointController>();
+		
+		GameObject movementController = GameObject.Find("MovementController");
+		myMovementController = movementController.GetComponent<MovementControllerScript>();
 	}
 
 	// Update is called once per frame
@@ -95,8 +112,9 @@ public class ButtonManager : MonoBehaviour
 		if (playerTransform.position == lastWayPoint.position)
         {
             finalElements.SetActive(true);
-            //myUIController.hideObjectives();
-            Time.timeScale = 0f; 
+			//myUIController.hideObjectives();
+			Time.timeScale = 0f;
+			//myMovementController.bikeMovement = 0f;
         }
 
         
@@ -106,6 +124,7 @@ public class ButtonManager : MonoBehaviour
     {
 		welcomeElements.SetActive(false);
         Time.timeScale = 1f;
+		myMovementController.bikeMovement = 1f;
 		if (first_time)
 		{
 			myWarningController.playLeftWarning();
@@ -124,10 +143,10 @@ public class ButtonManager : MonoBehaviour
 
 		
 		Q1.SetActive(true);
-		Time.timeScale = 0f;
+		myMovementController.bikeMovement = 0f;
 		oops.SetActive(false);
 		//beginHalo();
-		Q1isCorrect();
+		//Q1isCorrect();
         
     }
 
@@ -145,30 +164,35 @@ public class ButtonManager : MonoBehaviour
 		//anim.SetBool("HelmetFloat", false);
 		if (option1.isOn && option2.isOn && option3.isOn && option4.isOn && option5.isOn && option6.isOn)
 		{
-            Debug.Log("Q1isCorrect");
+			
 			Q1.SetActive(false);
-			Time.timeScale = 0f;
-			anim.SetBool("HelmetFloat", true);
-			source.clip = correct;
-			source.Play();
-			Invoke(nameof(timeContinue), 2.0f);
-			
-			anim.Play("HelmetFloat");
+			Time.timeScale = 1f;
+			myMovementController.bikeMovement = 0f;
+			HelmetWayPoints.startMovement = true;
+			LightWayPoints.startMovement = true;
+			BellWayPoints.startMovement = true;
+			HeadphonesWayPoints.startMovement = true;
+			//anim.SetBool("HelmetFloat", true);
+			//source.clip = correct;
+			//source.Play();
+			Invoke(nameof(showQ1re), 3.0f);
+
+			//anim.Play("HelmetFloat");
 
 
-			Invoke(nameof(timeContinue), 2.0f);
-			Time.timeScale = 0f;
-			Q1re.SetActive(true);
-			
-				//ui Q1remove
-				//play animation 
-				//ui reinforcement
-			
+			//Invoke(nameof(timeContinue), 2.0f);
+			//Time.timeScale = 0f;
+			//Q1re.SetActive(true);
+
+			//ui Q1remove
+			//play animation 
+			//ui reinforcement
+
 		}
 		else
 		{
 			restartQ1();
-			anim.SetBool("HelmetFloat", false);
+			//anim.SetBool("HelmetFloat", false);
 			oops.SetActive(true);
 			source.clip = wrong;
 			source.Play();
@@ -291,5 +315,14 @@ public class ButtonManager : MonoBehaviour
 	{
 		Time.timeScale = 1f;
 		//currentTargetPos++;
+	}
+
+	private void showQ1re()
+    {
+		Time.timeScale = 0f;
+		HelmetWayPoints.deactivateObject();
+		LightWayPoints.deactivateObject();
+		BellWayPoints.deactivateObject();
+		Q1re.SetActive(true);
 	}
 }

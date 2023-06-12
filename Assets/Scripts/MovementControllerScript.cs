@@ -34,7 +34,7 @@ public class MovementControllerScript : MonoBehaviour
 
     private bool experienceDone = false;
     private int degresPerSecond = 2;
-    private float bikeMovement = 1.0f;
+    public float bikeMovement = 1.0f;
 
     private BlinkWarningController myWarningController;
 

@@ -5,7 +5,8 @@ using UnityEngine;
 public class WayPointController : MonoBehaviour
 {
     [SerializeField] Transform objectToMove;
-    private float movementSpeed = 2.0f;
+    private float movementSpeed = 1.5f;
+    private float ratio = 600.0f;
     private int currentTargetPos;
     private bool movementDone = false;
     public bool startMovement = false;
@@ -25,7 +26,7 @@ public class WayPointController : MonoBehaviour
     {
         if (!movementDone && startMovement)
         {
-            objectToMove.position = Vector3.MoveTowards(objectToMove.position, WayPoints[currentTargetPos].position, movementSpeed * Time.deltaTime);
+            objectToMove.position = Vector3.MoveTowards(objectToMove.position, WayPoints[currentTargetPos].position, movementSpeed / ratio);
             updateTargetPosition();
         }
     }
@@ -41,5 +42,10 @@ public class WayPointController : MonoBehaviour
         {
             movementDone = true;
         }
+    }
+
+    public void deactivateObject()
+    {
+        objectToMove.gameObject.SetActive(false);
     }
 }
