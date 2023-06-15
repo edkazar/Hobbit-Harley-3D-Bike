@@ -40,7 +40,8 @@ public class Q245ToggleGroup : MonoBehaviour
     {
         source.clip = correct;
         source.Play();
-        Invoke(nameof(SetRe), 0.1f);
+        quizfin.SetActive(false); 
+        //Invoke(nameof(SetRe), 0.1f);
         re.SetActive(true);
     }
 

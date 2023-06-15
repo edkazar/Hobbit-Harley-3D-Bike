@@ -30,6 +30,7 @@ public class Quiz245 : MonoBehaviour, ISelectHandler
     {
         Debug.Log("selected");
     }
+
     public void Q2isCorrect()
     {
         if (A1)
@@ -37,8 +38,8 @@ public class Quiz245 : MonoBehaviour, ISelectHandler
             Debug.Log("Q2correct");
             source.clip = correct;
             source.Play();
-            Q2re.SetActive(true);
             Q2.SetActive(false);
+            Q2re.SetActive(true);
         }
         else
         {
