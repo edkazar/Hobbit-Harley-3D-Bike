@@ -14,12 +14,15 @@ public class Q245ToggleGroup : MonoBehaviour
     public AudioClip correct;
     public AudioClip wrong;
 
+    public bool isQuiz4 = false;
+
     [SerializeField] private GameObject DrivewayBrakeLights;
     [SerializeField] private GameObject DrivewayBackLights;
 
     void Start()
     {
         toggleGroup = GetComponent<ToggleGroup>();
+        toggleGroup.SetAllTogglesOff();
         source.Play();
     }
 
@@ -44,8 +47,16 @@ public class Q245ToggleGroup : MonoBehaviour
         source.clip = correct;
         source.Play();
         quizfin.SetActive(false);
-        re.SetActive(true);
 
+        if(!isQuiz4)
+        {
+            re.SetActive(true);
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+        
         Invoke(nameof(changeCarLights), 0.1f);
 
     }

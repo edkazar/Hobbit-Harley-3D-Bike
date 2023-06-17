@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class WayPoint18Triggers : MonoBehaviour
 {
-    private MovementControllerScript myMovementController;
     private ChainSoundController myChainSoundController;
+    private CameraRotations myCameraScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        GameObject MovementController = GameObject.Find("MovementController");
-        myMovementController = MovementController.GetComponent<MovementControllerScript>();
+        GameObject CameraController = GameObject.Find("Camera");
+        myCameraScript = CameraController.GetComponent<CameraRotations>();
 
         GameObject ChainController = GameObject.Find("ChainSoundManager");
         myChainSoundController = ChainController.GetComponent<ChainSoundController>();
@@ -19,7 +19,7 @@ public class WayPoint18Triggers : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        myMovementController.movementSpeed = 3.0f;
-        myChainSoundController.playSound(1.0f);
+        myChainSoundController.stopSound();
+        myCameraScript.positionUpdated = true;
     }
 }
