@@ -173,8 +173,8 @@ public class ButtonManager : MonoBehaviour
 			BellWayPoints.startMovement = true;
 			HeadphonesWayPoints.startMovement = true;
 			//anim.SetBool("HelmetFloat", true);
-			//source.clip = correct;
-			//source.Play();
+			source.clip = correct;
+			source.Play();
 			Invoke(nameof(showQ1re), 3.0f);
 
 			//anim.Play("HelmetFloat");
@@ -207,12 +207,12 @@ public class ButtonManager : MonoBehaviour
 		if (option7_1.isOn && option7_2.isOn && option7_3.isOn)
 		{
 			Q7.SetActive(false);
-			Time.timeScale = 0f;
+			Time.timeScale = 1f;
 			source.clip = correct;
 			source.Play();
 			Invoke(nameof(timeContinue), 2.0f);
 
-			Q7re.SetActive(true);
+			//Q7re.SetActive(true);
 		}
 		else
 		{

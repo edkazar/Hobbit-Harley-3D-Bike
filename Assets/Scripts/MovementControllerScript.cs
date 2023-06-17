@@ -41,6 +41,9 @@ public class MovementControllerScript : MonoBehaviour
     private CarSpeedController mySpeedController1;
     private CarSpeedController mySpeedController2;
 
+    [SerializeField] private GameObject PostBrakeLights;
+    [SerializeField] private GameObject PostBackLights;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -220,7 +223,8 @@ public class MovementControllerScript : MonoBehaviour
 			}
             else if (playerTransform.position == WayPoints[19].position)
 			{
-				Time.timeScale = 0f;
+                bikeMovement = 0.0f;
+                Time.timeScale = 0f;
 				quiz7.SetActive(true);
 				Invoke(nameof(timeContinue), 2.0f);
 
@@ -292,7 +296,7 @@ public class MovementControllerScript : MonoBehaviour
     {
 		Time.timeScale = 1f;
 
-        if(playerTransform.position == WayPoints[6].position || playerTransform.position == WayPoints[15].position)
+        if(playerTransform.position == WayPoints[6].position || playerTransform.position == WayPoints[15].position || playerTransform.position == WayPoints[19].position)
         {
             startTest = true;
         }
@@ -313,5 +317,13 @@ public class MovementControllerScript : MonoBehaviour
     public float getBikeMovement()
     {
         return bikeMovement;
+    }
+    public void changeCarLights()
+    {
+        if (PostBackLights != null)
+        {
+            PostBrakeLights.SetActive(true);
+            PostBackLights.SetActive(false);
+        }
     }
 }
