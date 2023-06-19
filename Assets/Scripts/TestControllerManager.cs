@@ -16,7 +16,7 @@ public class TestControllerManager : MonoBehaviour
     private int outerTestID;
     private int innerTestID;
 
-    private int[] testsOrder = new int[] {2, 4, 1, 0, 1, 3, 1, 0 , 1, 2, 3, 2, 3}; // 0: right, 1: left, 2: face, 3: forward, 4: yield
+    private int[] testsOrder = new int[] {2, 4, 3, 0, 3, 1, 0 , 1, 2, 3, 2, 3}; // 0: right, 1: left, 2: face, 3: forward, 4: yield
     private string[] helpTexts = new string[] { "Before crossing a street, look to your right to make sure cars are not coming!",
                                                 "Before crossing a street, look to your left to make sure cars are not coming!",
                                                 "If a car is coming, make eye contact with the driver to ask for the right-of-way!",

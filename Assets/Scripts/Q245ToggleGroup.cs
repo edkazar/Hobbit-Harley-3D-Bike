@@ -22,8 +22,17 @@ public class Q245ToggleGroup : MonoBehaviour
     void Start()
     {
         toggleGroup = GetComponent<ToggleGroup>();
+        toggleGroup.allowSwitchOff = true;
         toggleGroup.SetAllTogglesOff();
         source.Play();
+    }
+
+    private void OnEnable()
+    {
+        foreach (Toggle tog in toggleGroup.ActiveToggles())
+        {
+            tog.GetComponent<Image>().gameObject.SetActive(false);
+        }
     }
 
     public void Submit()
