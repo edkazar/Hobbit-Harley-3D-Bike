@@ -27,14 +27,6 @@ public class Q245ToggleGroup : MonoBehaviour
         source.Play();
     }
 
-    private void OnEnable()
-    {
-        foreach (Toggle tog in toggleGroup.ActiveToggles())
-        {
-            tog.GetComponent<Image>().gameObject.SetActive(false);
-        }
-    }
-
     public void Submit()
     {
         Toggle toggle = toggleGroup.ActiveToggles().FirstOrDefault();
