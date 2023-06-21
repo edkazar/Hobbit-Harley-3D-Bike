@@ -19,12 +19,6 @@ public class CarSpeedController : MonoBehaviour
     public bool slowingDown = false;
 
     public Transform[] wheels;
-    //public Transform Wheel01;
-    //public Transform Wheel02;
-    //public Transform Wheel03;
-    //public Transform Wheel04;
-    //public Transform Wheel05;
-    //public Transform Wheel06;
 
     // Start is called before the first frame update
     void Start()
@@ -67,7 +61,7 @@ public class CarSpeedController : MonoBehaviour
         wheelSpeed = currentMovementSpeed * 20;
         foreach(Transform hubcap in wheels)
         {
-            hubcap.RotateAround(hubcap.position, Vector3.forward, wheelSpeed * Time.deltaTime);
+            hubcap.RotateAround(hubcap.position, Vector3.forward, wheelSpeed * Time.deltaTime * Time.timeScale);
         }
 
     }

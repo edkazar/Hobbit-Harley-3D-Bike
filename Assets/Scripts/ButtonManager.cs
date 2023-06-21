@@ -65,6 +65,7 @@ public class ButtonManager : MonoBehaviour
 	private MovementControllerScript myMovementController;
 
 	private bool first_time = true;
+	[SerializeField] public Image img;
 
 	private void Awake()
 	{
@@ -122,8 +123,9 @@ public class ButtonManager : MonoBehaviour
 
     public void startExperience()
     {
+		Debug.Log("Here2");
 		welcomeElements.SetActive(false);
-        Time.timeScale = 1f;
+		Time.timeScale = 1f;
 		myMovementController.bikeMovement = 1f;
 		if (first_time)
 		{
@@ -132,7 +134,36 @@ public class ButtonManager : MonoBehaviour
 		}
 	}
 
-    public void endExperience()
+	public void fading()
+    {
+		StartCoroutine(FadingImage());
+	}
+
+	public IEnumerator FadingImage()
+	{
+		img.gameObject.SetActive(true);
+
+		// fade from transparent to opaque
+		for (float i = 0; i <= 1; i += 0.01f)
+		{
+			// set color with i as alpha
+			img.color = new Color(1, 1, 1, i);
+			yield return null;
+		}
+
+		// fade from opaque to transparent
+		for (float i = 1; i >= 0; i -= 0.01f)
+		{
+			// set color with i as alpha
+			Debug.Log(i);
+			img.color = new Color(1, 1, 1, i);
+			yield return null;
+		}
+		
+		
+	}
+
+	public void endExperience()
     {
         Application.Quit();
     }

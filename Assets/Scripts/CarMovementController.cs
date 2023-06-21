@@ -43,11 +43,11 @@ public class CarMovementController : MonoBehaviour
 
         if (forwardDirection)
         {
-            carTransform.position = carTransform.position - new Vector3(mySpeedController.currentMovementSpeed * Time.deltaTime / 2, 0, 0);
+            carTransform.position = carTransform.position - new Vector3(Time.timeScale * mySpeedController.currentMovementSpeed * Time.deltaTime / 2, 0, 0);
         }
         else
         {
-            carTransform.position = carTransform.position + new Vector3(mySpeedController.currentMovementSpeed * Time.deltaTime / 2, 0, 0);
+            carTransform.position = carTransform.position + new Vector3(Time.timeScale * mySpeedController.currentMovementSpeed * Time.deltaTime / 2, 0, 0);
         }
 
         //resetPosition();
