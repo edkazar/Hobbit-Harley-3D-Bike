@@ -33,8 +33,8 @@ public class TestControllerManager : MonoBehaviour
     [SerializeField] private Transform Ring1Pos;
     [SerializeField] private Transform Ring2Pos;
     [SerializeField] private Transform Ring3Pos;
-    [SerializeField] private Transform Ring4Pos;
-    [SerializeField] private Transform Ring5Pos;
+    /*[SerializeField] private Transform Ring4Pos;
+    [SerializeField] private Transform Ring5Pos;*/
 
     [SerializeField] private GameObject HelpText;
     private Text helpTextField;
@@ -193,16 +193,16 @@ public class TestControllerManager : MonoBehaviour
                 Vector3 ring1 = myCamera.WorldToScreenPoint(Ring1Pos.position);
                 Vector3 ring2 = myCamera.WorldToScreenPoint(Ring2Pos.position);
                 Vector3 ring3 = myCamera.WorldToScreenPoint(Ring3Pos.position);
-                Vector3 ring4 = myCamera.WorldToScreenPoint(Ring4Pos.position);
-                Vector3 ring5 = myCamera.WorldToScreenPoint(Ring5Pos.position);
+                /*Vector3 ring4 = myCamera.WorldToScreenPoint(Ring4Pos.position);
+                Vector3 ring5 = myCamera.WorldToScreenPoint(Ring5Pos.position);*/
 
                 //if (mousePosX < anillo4.x + offset * 2 && mousePosX > anillo4.x - offset * 2 && mousePosY < anillo4.y + offset * 2 && mousePosY > anillo4.y - offset * 2)
 
                 if ((mousePosX < ring1.x + offset * 2 && mousePosX > ring1.x - offset * 2 && mousePosY < ring1.y + offset * 2 && mousePosY > ring1.y - offset * 2) ||
                 (mousePosX < ring2.x + offset * 2 && mousePosX > ring2.x - offset * 2 && mousePosY < ring2.y + offset * 2 && mousePosY > ring2.y - offset * 2) ||
-                (mousePosX < ring3.x + offset * 2 && mousePosX > ring3.x - offset * 2 && mousePosY < ring3.y + offset * 2 && mousePosY > ring3.y - offset * 2) ||
+                (mousePosX < ring3.x + offset * 2 && mousePosX > ring3.x - offset * 2 && mousePosY < ring3.y + offset * 2 && mousePosY > ring3.y - offset * 2) /*||
                 (mousePosX < ring4.x + offset * 2 && mousePosX > ring4.x - offset * 2 && mousePosY < ring4.y + offset * 2 && mousePosY > ring4.y - offset * 2) ||
-                (mousePosX < ring5.x + offset * 2 && mousePosX > ring5.x - offset * 2 && mousePosY < ring5.y + offset * 2 && mousePosY > ring5.y - offset * 2))
+                (mousePosX < ring5.x + offset * 2 && mousePosX > ring5.x - offset * 2 && mousePosY < ring5.y + offset * 2 && mousePosY > ring5.y - offset * 2)*/)
                 {
                     timeTaken++;
 

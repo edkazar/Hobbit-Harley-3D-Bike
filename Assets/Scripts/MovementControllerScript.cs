@@ -32,6 +32,7 @@ public class MovementControllerScript : MonoBehaviour
     public bool startTest = false;
 
     private UITaskController myUIController;
+    [SerializeField] private GameObject FinalUI;
 
     private bool experienceDone = false;
     private int degresPerSecond = 2;
@@ -93,18 +94,16 @@ public class MovementControllerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rotationRoutine();
-
-        //updateTurning();
-
         if(!experienceDone)
         {
-            playerTransform.position = Vector3.MoveTowards(playerTransform.position, WayPoints[currentTargetPos].position, movementSpeed * Time.deltaTime * bikeMovement);
-        }
+            rotationRoutine();
 
-        updateWheelRotate();
-        
-		updateTargetPosition();
+            playerTransform.position = Vector3.MoveTowards(playerTransform.position, WayPoints[currentTargetPos].position, movementSpeed * Time.deltaTime * bikeMovement);
+            
+            updateWheelRotate();
+
+            updateTargetPosition();
+        }  
     }
 
     /*void updateTurning()
@@ -264,6 +263,9 @@ public class MovementControllerScript : MonoBehaviour
         if (playerTransform.position == WayPoints[WayPoints.Count-1].position)
         {
             experienceDone = true;
+            bikeMovement = 0.0f;
+            Time.timeScale = 0.0f;
+            FinalUI.SetActive(true);
         }
     }
 

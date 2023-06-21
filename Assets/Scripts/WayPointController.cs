@@ -6,7 +6,7 @@ public class WayPointController : MonoBehaviour
 {
     [SerializeField] Transform objectToMove;
     private float movementSpeed = 1.5f;
-    private float ratio = 600.0f;
+    private float ratio = 350.0f;
     private int currentTargetPos;
     private bool movementDone = false;
     public bool startMovement = false;

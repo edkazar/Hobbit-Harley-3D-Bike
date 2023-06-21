@@ -45,17 +45,16 @@ public class Q245ToggleGroup : MonoBehaviour
 
     public void QuizCorrect()
     {
-        source.clip = correct;
-        source.Play();
         quizfin.SetActive(false);
 
-        if(!isQuiz4)
+        if (!isQuiz4)
         {
             re.SetActive(true);
         }
         else
         {
             Time.timeScale = 1f;
+            
         }
         
         Invoke(nameof(changeCarLights), 0.1f);
