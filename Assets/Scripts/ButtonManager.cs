@@ -66,6 +66,8 @@ public class ButtonManager : MonoBehaviour
 
 	private bool first_time = true;
 	[SerializeField] public Image img;
+	[SerializeField] private AudioSource fade_in;
+	[SerializeField] private AudioSource fade_out;
 
 	private void Awake()
 	{
@@ -103,6 +105,8 @@ public class ButtonManager : MonoBehaviour
 		
 		GameObject movementController = GameObject.Find("MovementController");
 		myMovementController = movementController.GetComponent<MovementControllerScript>();
+
+		//audio = new AudioSource();
 	}
 
 	// Update is called once per frame
@@ -143,6 +147,8 @@ public class ButtonManager : MonoBehaviour
 	{
 		img.gameObject.SetActive(true);
 
+		fade_out.Play();
+
 		// fade from transparent to opaque
 		for (float i = 0; i <= 1; i += 0.01f)
 		{
@@ -150,6 +156,10 @@ public class ButtonManager : MonoBehaviour
 			img.color = new Color(1, 1, 1, i);
 			yield return null;
 		}
+
+		welcomeElements.SetActive(false);
+
+		fade_in.Play();
 
 		// fade from opaque to transparent
 		for (float i = 1; i >= 0; i -= 0.01f)
@@ -159,8 +169,10 @@ public class ButtonManager : MonoBehaviour
 			img.color = new Color(1, 1, 1, i);
 			yield return null;
 		}
-		
-		
+
+
+		Q1.SetActive(true);
+
 	}
 
 	public void endExperience()
