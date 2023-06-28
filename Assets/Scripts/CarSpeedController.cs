@@ -18,6 +18,8 @@ public class CarSpeedController : MonoBehaviour
     public int crossCounter = 0;
     public bool slowingDown = false;
 
+    private float previousSpeed;
+
     public Transform[] wheels;
 
     // Start is called before the first frame update
@@ -29,7 +31,11 @@ public class CarSpeedController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        rotateWheel();
+        //Debug.Log(currentMovementSpeed);
+        if (Time.timeScale > 0f && currentMovementSpeed > stopMovementSpeed)
+        {
+            rotateWheel();
+        }
     }
 
     public void resetSpeed(bool hasCrossed)
@@ -61,7 +67,7 @@ public class CarSpeedController : MonoBehaviour
         wheelSpeed = currentMovementSpeed * 20;
         foreach(Transform hubcap in wheels)
         {
-            hubcap.RotateAround(hubcap.position, Vector3.forward, wheelSpeed * Time.deltaTime * Time.timeScale);
+            hubcap.RotateAround(hubcap.position, Vector3.forward, wheelSpeed * Time.deltaTime);
         }
 
     }

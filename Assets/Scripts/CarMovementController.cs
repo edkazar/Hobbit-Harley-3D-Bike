@@ -41,11 +41,11 @@ public class CarMovementController : MonoBehaviour
     void Update()
     {
 
-        if (forwardDirection)
+        if (forwardDirection && Time.timeScale > 0f && mySpeedController.currentMovementSpeed > 0f)
         {
             carTransform.position = carTransform.position - new Vector3(Time.timeScale * mySpeedController.currentMovementSpeed * Time.deltaTime / 2, 0, 0);
         }
-        else
+        else if(!forwardDirection && Time.timeScale > 0f && mySpeedController.currentMovementSpeed > 0f)
         {
             carTransform.position = carTransform.position + new Vector3(Time.timeScale * mySpeedController.currentMovementSpeed * Time.deltaTime / 2, 0, 0);
         }
@@ -92,7 +92,7 @@ public class CarMovementController : MonoBehaviour
         mySpeedController.changeMovementspeed(-1);
     }*/
 
-    void checkCarPosition()
+    /*void checkCarPosition()
     {
         if (carTransform.position.z < 50 || carTransform.position.z > 100)
         {
@@ -110,9 +110,9 @@ public class CarMovementController : MonoBehaviour
             /*if (movementController.GetComponent<MovementControllerScript>().hasCrossed)
             {
                 carTransform.position = carTransform.position + new Vector3(0.0f, -30.0f, 0.0f);
-            }*/
+            }
         }
 
 
-    }
+    }*/
 }

@@ -42,6 +42,8 @@ public class MovementControllerScript : MonoBehaviour
 
     private CarSpeedController mySpeedController1;
     private CarSpeedController mySpeedController2;
+    private CarSpeedController mySpeedController3;
+    private CarSpeedController mySpeedController4;
 
     [SerializeField] private GameObject PostBrakeLights;
     [SerializeField] private GameObject PostBackLights;
@@ -84,8 +86,12 @@ public class MovementControllerScript : MonoBehaviour
 
         GameObject SpeedObject1 = GameObject.Find("CarMovementController1");
         GameObject SpeedObject2 = GameObject.Find("CarMovementController2");
+        GameObject SpeedObject3 = GameObject.Find("CarMovementController3");
+        GameObject SpeedObject4 = GameObject.Find("CarMovementController4");
         mySpeedController1 = SpeedObject1.GetComponent<CarSpeedController>();
         mySpeedController2 = SpeedObject2.GetComponent<CarSpeedController>();
+        mySpeedController3 = SpeedObject3.GetComponent<CarSpeedController>();
+        mySpeedController4 = SpeedObject4.GetComponent<CarSpeedController>();
 
         //GameObject UIController = GameObject.Find("UI_Checklist");
         //myUIController = UIController.GetComponent<UITaskController>();
@@ -293,6 +299,8 @@ public class MovementControllerScript : MonoBehaviour
         mySpeedController2.slowingDown = false;
         mySpeedController1.resetSpeed(false);
         mySpeedController2.resetSpeed(false);
+        mySpeedController3.resetSpeed(false);
+        mySpeedController4.resetSpeed(false);
     }
 
     public int getWaypointsLength()

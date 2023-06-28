@@ -165,7 +165,6 @@ public class ButtonManager : MonoBehaviour
 		for (float i = 1; i >= 0; i -= 0.01f)
 		{
 			// set color with i as alpha
-			Debug.Log(i);
 			img.color = new Color(1, 1, 1, i);
 			yield return null;
 		}
