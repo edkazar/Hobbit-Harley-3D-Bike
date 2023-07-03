@@ -78,6 +78,7 @@ public class MovementControllerScript : MonoBehaviour
         WayPoints.Add(GameObject.Find("WayPoint22").transform);
         WayPoints.Add(GameObject.Find("WayPoint23").transform);
         WayPoints.Add(GameObject.Find("WayPoint24").transform);
+        WayPoints.Add(GameObject.Find("WayPoint25").transform);
 
         currentTargetPos = 0;
 
