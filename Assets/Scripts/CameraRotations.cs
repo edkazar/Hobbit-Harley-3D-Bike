@@ -6,7 +6,7 @@ public class CameraRotations : MonoBehaviour
 {
     [SerializeField] Camera myCamera;
 
-    [SerializeField] private float sensitivity = 0.07f;
+    [SerializeField] private float sensitivity = 0.3f;
 
     [SerializeField] private Transform playerTransform;
 

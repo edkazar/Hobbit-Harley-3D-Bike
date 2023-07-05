@@ -5,7 +5,7 @@ using UnityEngine;
 public class WayPointController : MonoBehaviour
 {
     [SerializeField] Transform objectToMove;
-    private float movementSpeed = 1.5f;
+    private float movementSpeed = 3.5f;
     private float ratio = 350.0f;
     private int currentTargetPos;
     private bool movementDone = false;

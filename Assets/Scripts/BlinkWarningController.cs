@@ -16,7 +16,7 @@ public class BlinkWarningController : MonoBehaviour
     public void playLeftWarning()
     {
         LeftWarning.SetActive(true);
-        Invoke(nameof(deactivateWarning), 3.0f);
+        Invoke(nameof(deactivateWarning), 6.0f);
     }
 
     public void playRightWarning()
