@@ -69,12 +69,16 @@ public class Quiz3 : MonoBehaviour
 		A5.transform.position = Input.mousePosition;
 	}
 
-	
+	private Vector3 getDistanceVector(Vector3 pos1, Vector3 pos2)
+    {
+		return new Vector3(Mathf.Abs(pos1.x - pos2.x), Mathf.Abs(pos1.y - pos2.y), Mathf.Abs(pos1.z - pos2.z));
+    }
+
 
 	public void dropA1()
 	{
-		float Distance = Vector3.Distance(A1.transform.position, B1.transform.position);
-		if (Distance < 20)
+		Vector3 Distance = getDistanceVector(A1.transform.position, B1.transform.position);
+		if (Distance.x < 50 && Distance.y < 10)
 		{
 			A1.transform.position = B1.transform.position;
 			source.clip = correct;
@@ -90,8 +94,8 @@ public class Quiz3 : MonoBehaviour
 	}
 	public void dropA2()
 	{
-		float Distance = Vector3.Distance(A2.transform.position, B2.transform.position);
-		if (Distance < 20)
+		Vector3 Distance = getDistanceVector(A2.transform.position, B2.transform.position);
+		if (Distance.x < 50 && Distance.y < 10)
 		{
 			A2.transform.position = B2.transform.position;
 			source.clip = correct;
@@ -107,8 +111,8 @@ public class Quiz3 : MonoBehaviour
 	}
 	public void dropA3()
 	{
-		float Distance = Vector3.Distance(A3.transform.position, B3.transform.position);
-		if (Distance < 20)
+		Vector3 Distance = getDistanceVector(A3.transform.position, B3.transform.position);
+		if (Distance.x < 50 && Distance.y < 10)
 		{
 			A3.transform.position = B3.transform.position;
 			source.clip = correct;
@@ -124,8 +128,8 @@ public class Quiz3 : MonoBehaviour
 	}
 	public void dropA4()
 	{
-		float Distance = Vector3.Distance(A4.transform.position, B4.transform.position);
-		if (Distance < 20)
+		Vector3 Distance = getDistanceVector(A4.transform.position, B4.transform.position);
+		if (Distance.x < 50 && Distance.y < 10)
 		{
 			A4.transform.position = B4.transform.position;
 			source.clip = correct;
@@ -141,8 +145,8 @@ public class Quiz3 : MonoBehaviour
 	}
 	public void dropA5()
 	{
-		float Distance = Vector3.Distance(A5.transform.position, B5.transform.position);
-		if (Distance < 20)
+		Vector3 Distance = getDistanceVector(A5.transform.position, B5.transform.position);
+		if (Distance.x < 50 && Distance.y < 10)
 		{
 			A5.transform.position = B5.transform.position;
 			source.clip = correct;
